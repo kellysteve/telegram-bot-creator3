@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot Creator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <h1>Telegram Bot Creator</h1>
+    </nav>
+    <main>
+        <h2>Create Your Telegram Bot</h2>
+        <input type="text" id="botName" placeholder="Enter Bot Name">
+        <button onclick="nextStep()">Next</button>
+    </main>
+    <script>
+        function nextStep() {
+            const botName = document.getElementById('botName').value;
+            if (!botName.trim()) {
+                alert("Please enter a bot name.");
+                return;
+            }
+            localStorage.setItem('botName', botName);
+            window.location.href = 'token.html';
+        }
+    </script>
+</body>
+</html>
