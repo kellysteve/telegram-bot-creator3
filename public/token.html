@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Bot Token</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <h1>Telegram Bot Creator</h1>
+    </nav>
+    <main>
+        <h2>Enter Your Bot Token</h2>
+        <input type="text" id="botToken" placeholder="Enter Bot Token">
+        <button onclick="submitToken()">Submit</button>
+        <p id="status"></p>
+    </main>
+    <script>
+        function submitToken() {
+            const botName = localStorage.getItem('botName');
+            const botToken = document.getElementById('botToken').value;
+            if (!botToken.trim()) {
+                alert("Please enter a bot token.");
+                return;
+            }
+
+            fetch('/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ botName, botToken })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('status').innerText = data.message;
+            });
+        }
+    </script>
+</body>
+</html>
